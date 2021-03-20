@@ -1,15 +1,23 @@
 ﻿using System;
+using PV260_Minesweeper;
 
-namespace Minesweeper
+namespace PV260_Minesweeper
 {
-    public class Class1
+    public static class Minesweeper
     {
-        public GameBoard GenerateGameBoard()
+		private static GameBoard gameBoard;
+
+		public static GameBoard GenerateGameBoard(int width, int height)
         {
-            return null;
+	        if (width < 3 || width > 50 || height < 3 || height > 50)
+	        {
+		        throw new ArgumentOutOfRangeException($"Height {height} or width {width} is out of valid size");
+	        }
+
+	        return new GameBoard();
         }
 
-        public void Play()
+        public static void Play()
         {
             
         }
