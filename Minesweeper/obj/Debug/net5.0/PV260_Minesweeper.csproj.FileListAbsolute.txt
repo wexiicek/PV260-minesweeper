@@ -1,0 +1,12 @@
+C:\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\PV260_Minesweeper.deps.json
+C:\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\PV260_Minesweeper.dll
+C:\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\ref\PV260_Minesweeper.dll
+C:\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\PV260_Minesweeper.pdb
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.csprojAssemblyReference.cache
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.GeneratedMSBuildEditorConfig.editorconfig
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.AssemblyInfoInputs.cache
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.AssemblyInfo.cs
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.csproj.CoreCompileInputs.cache
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.dll
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\ref\PV260_Minesweeper.dll
+C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.pdb

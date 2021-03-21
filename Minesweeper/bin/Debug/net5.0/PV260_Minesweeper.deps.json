@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "PV260_Minesweeper/1.0.0": {
+        "runtime": {
+          "PV260_Minesweeper.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PV260_Minesweeper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

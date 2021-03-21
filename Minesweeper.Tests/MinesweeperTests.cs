@@ -26,5 +26,33 @@ namespace MinesweeperTests
 
             Assert.IsInstanceOf<GameBoard>(board);
         }
+        
+        [TestCase(3, 3)]
+        [TestCase(6, 9)]
+        public void GenerateGameBoard_ValidSize_ReturnsValidBoard(int width, int height)
+        {
+            
+            var board = Minesweeper.GenerateGameBoard(width, height);
+
+            var boardWidth = board.Width;
+            var boardHeight = board.Height;
+
+            Assert.AreEqual(width, boardWidth);
+            Assert.AreEqual(height, boardHeight);
+            
+            Assert.AreEqual(boardWidth * boardHeight, board.Board.Length);
+        }
+        
+        [TestCase(10, 10)]
+        public void GenerateGameBoard_ValidSize_MineCountInRange(int width, int height)
+        {
+            var board = Minesweeper.GenerateGameBoard(width, height);
+
+            var min = Math.Ceiling(width * height * 0.2);
+            var max = Math.Floor(width * height * 0.6);
+            
+            Assert.GreaterOrEqual(min, board.MineCount);
+            Assert.LessOrEqual(max, board.MineCount);
+        }
     }
 }

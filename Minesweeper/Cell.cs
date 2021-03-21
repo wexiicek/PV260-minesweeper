@@ -2,8 +2,8 @@ namespace PV260_Minesweeper
 {
     public class Cell
     {
-        public bool IsBomb { get; set; }
-        public bool IsVisible { get; set; }
-        public bool IsFlag { get; set; }
+        public int MinesAround { get; set; }
+        public Visibility Visibility { get; set; }
+        public CellState CellState { get; set; }
     }
 }
