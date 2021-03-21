@@ -5,7 +5,7 @@ namespace PV260_Minesweeper
 {
     public static class Minesweeper
     {
-		private static GameBoard gameBoard;
+		private static GameBoard _gameBoard;
 
 		public static GameBoard GenerateGameBoard(int width, int height)
         {
@@ -14,15 +14,19 @@ namespace PV260_Minesweeper
 		        throw new ArgumentOutOfRangeException($"Height {height} or width {width} is out of valid size");
 	        }
 
-	        gameBoard = new GameBoard(width, height);
-	        gameBoard.AddMinesToTheBoard();
+	        _gameBoard = new GameBoard(width, height);
+	        _gameBoard.AddMinesToTheBoard();
 
-	        return gameBoard;
+	        return _gameBoard;
         }
 
-        public static void Play()
+        public static void Uncover(int x, int y)
         {
             
+        }
+
+        public static void Flag(int x, int y)
+        {
         }
     }
 }
