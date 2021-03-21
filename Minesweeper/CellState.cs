@@ -3,7 +3,7 @@
     public enum CellState
     {
        Empty,
-       Bomb,
+       Mine,
        Flag,
        MinesAround
     }

@@ -14,7 +14,10 @@ namespace PV260_Minesweeper
 		        throw new ArgumentOutOfRangeException($"Height {height} or width {width} is out of valid size");
 	        }
 
-	        return new GameBoard(width, height);
+	        gameBoard = new GameBoard(width, height);
+	        gameBoard.AddMinesToTheBoard();
+
+	        return gameBoard;
         }
 
         public static void Play()

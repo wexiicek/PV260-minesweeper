@@ -4639,19 +4639,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\adamn\\.nuget\\packages\\": {}
+    "C:\\Users\\Martin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\PV260-minesweeper\\Minesweeper.Tests\\PV260_Minesweeper.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Martin\\Desktop\\DISTANCNI_STUDIUM\\PV260\\Ukol_1\\PV260-minesweeper\\Minesweeper.Tests\\PV260_Minesweeper.Tests.csproj",
       "projectName": "PV260_Minesweeper.Tests",
-      "projectPath": "C:\\PV260-minesweeper\\Minesweeper.Tests\\PV260_Minesweeper.Tests.csproj",
-      "packagesPath": "C:\\Users\\adamn\\.nuget\\packages\\",
-      "outputPath": "C:\\PV260-minesweeper\\Minesweeper.Tests\\obj\\",
+      "projectPath": "C:\\Users\\Martin\\Desktop\\DISTANCNI_STUDIUM\\PV260\\Ukol_1\\PV260-minesweeper\\Minesweeper.Tests\\PV260_Minesweeper.Tests.csproj",
+      "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Martin\\Desktop\\DISTANCNI_STUDIUM\\PV260\\Ukol_1\\PV260-minesweeper\\Minesweeper.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\adamn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4659,14 +4666,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/caliburn-micro-builds/api/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\PV260-minesweeper\\Minesweeper\\PV260_Minesweeper.csproj": {
-              "projectPath": "C:\\PV260-minesweeper\\Minesweeper\\PV260_Minesweeper.csproj"
+            "C:\\Users\\Martin\\Desktop\\DISTANCNI_STUDIUM\\PV260\\Ukol_1\\PV260-minesweeper\\Minesweeper\\PV260_Minesweeper.csproj": {
+              "projectPath": "C:\\Users\\Martin\\Desktop\\DISTANCNI_STUDIUM\\PV260\\Ukol_1\\PV260-minesweeper\\Minesweeper\\PV260_Minesweeper.csproj"
             }
           }
         }
@@ -4709,7 +4717,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

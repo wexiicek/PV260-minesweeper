@@ -4,7 +4,8 @@ using PV260_Minesweeper;
 
 namespace MinesweeperTests
 {
-    public class Tests
+	[TestFixture]
+    public class MinesweeperTests
     {
         [TestCase(2, 2)]
         [TestCase(2, 3)]
@@ -41,18 +42,6 @@ namespace MinesweeperTests
             Assert.AreEqual(height, boardHeight);
             
             Assert.AreEqual(boardWidth * boardHeight, board.Board.Length);
-        }
-        
-        [TestCase(10, 10)]
-        public void GenerateGameBoard_ValidSize_MineCountInRange(int width, int height)
-        {
-            var board = Minesweeper.GenerateGameBoard(width, height);
-
-            var min = Math.Ceiling(width * height * 0.2);
-            var max = Math.Floor(width * height * 0.6);
-            
-            Assert.GreaterOrEqual(min, board.MineCount);
-            Assert.LessOrEqual(max, board.MineCount);
         }
     }
 }

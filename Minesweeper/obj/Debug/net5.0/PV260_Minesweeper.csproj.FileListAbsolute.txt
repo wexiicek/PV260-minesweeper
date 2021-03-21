@@ -10,3 +10,15 @@ C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.csproj.CoreC
 C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.dll
 C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\ref\PV260_Minesweeper.dll
 C:\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.pdb
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\PV260_Minesweeper.deps.json
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\PV260_Minesweeper.dll
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\ref\PV260_Minesweeper.dll
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\bin\Debug\net5.0\PV260_Minesweeper.pdb
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.csprojAssemblyReference.cache
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.AssemblyInfoInputs.cache
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.AssemblyInfo.cs
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.csproj.CoreCompileInputs.cache
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.dll
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\ref\PV260_Minesweeper.dll
+C:\Users\Martin\Desktop\DISTANCNI_STUDIUM\PV260\Ukol_1\PV260-minesweeper\Minesweeper\obj\Debug\net5.0\PV260_Minesweeper.pdb
