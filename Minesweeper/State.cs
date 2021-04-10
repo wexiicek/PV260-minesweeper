@@ -1,10 +1,9 @@
 ﻿namespace PV260_Minesweeper
 {
-    public enum CellState
+    public enum State
     {
        Empty,
        Mine,
-       Flag,
        MinesAround
     }
 }

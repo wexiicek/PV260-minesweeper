@@ -1,8 +1,9 @@
 ﻿namespace PV260_Minesweeper
 {
-    public enum Visibility
+    public enum Display
     {
         Visible,
-        Hidden
+        Hidden,
+        Flag
     }
 }

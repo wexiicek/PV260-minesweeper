@@ -1,11 +1,14 @@
 ﻿using System;
-using PV260_Minesweeper;
 
 namespace PV260_Minesweeper
 {
     public static class Minesweeper
     {
-		private static GameBoard _gameBoard;
+		public static GameStatus GameStatus { get; private set; }
+		public static GameBoard GameBoard { get; private set; }
+
+		private static int _flaggedCount;
+		private static int _initialMinesCount;
 
 		public static GameBoard GenerateGameBoard(int width, int height)
         {
@@ -14,19 +17,25 @@ namespace PV260_Minesweeper
 		        throw new ArgumentOutOfRangeException($"Height {height} or width {width} is out of valid size");
 	        }
 
-	        _gameBoard = new GameBoard(width, height);
-	        _gameBoard.AddMinesToTheBoard();
+	        GameStatus = GameStatus.InProgress;
+	        GameBoard = new GameBoard(width, height);
+	        GameBoard.AddMinesToTheBoard();
 
-	        return _gameBoard;
+	        _initialMinesCount = GameBoard.MineCount;
+	        _flaggedCount = 0;
+
+	        return GameBoard;
         }
 
-        public static void Uncover(int x, int y)
+        public static GameBoard Uncover(int row, int column)
         {
-            
+	        return GameBoard;
+
         }
 
-        public static void Flag(int x, int y)
+        public static GameBoard Flag(int row, int column)
         {
-        }
+	        return GameBoard;
+		}
     }
 }

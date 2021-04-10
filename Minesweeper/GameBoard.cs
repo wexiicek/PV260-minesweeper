@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Math = System.Math;
 
 namespace PV260_Minesweeper
@@ -15,6 +13,8 @@ namespace PV260_Minesweeper
 
 		public int MineCount { get; set; }
 
+		private int[,] directions = { { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } };
+
 		public GameBoard(int width, int height)
 		{
 			Width = width;
@@ -22,14 +22,13 @@ namespace PV260_Minesweeper
 
 			Board = new Cell[width, height];
 
-			for (int y = 0; y < height; y++)
+			for (int row = 0; row < width; row++)
 			{
-				for (int x = 0; x < width; x++)
+				for (int col = 0; col < height; col++)
 				{
-					Board[x, y] = new Cell() {CellState = CellState.Empty};
+					Board[row, col] = new Cell() {State = State.Empty, Display = Display.Hidden};
 				}
 			}
-
 		}
 
 		public void AddMinesToTheBoard()
@@ -41,50 +40,71 @@ namespace PV260_Minesweeper
 
 			while (mineCount > 0)
 			{
-				var x = random.Next(0, Width - 1);
-				var y = random.Next(0, Height - 1);
+				var row = random.Next(0, Width - 1);
+				var column = random.Next(0, Height - 1);
 
-				if (Board[x, y].CellState == CellState.Mine) continue;
+				if (Board[row, column].State == State.Mine) continue;
 
-				Board[x, y].CellState = CellState.Mine;
-				
+				Board[row, column].State = State.Mine;
 				mineCount--;
-
-				int[,] directions = {{0, -1}, {+1, -1}, {+1, 0}, {+1, +1}, {0, +1}, {-1, +1}, {-1, 0}, {-1, -1}};
 
 				for (var i = 0; i < 8; i++)
 				{
 					int xDir = directions[i, 0];
 					int yDir = directions[i, 1];
-					
 
-					if (x + xDir < 0 || y + yDir < 0 || x + xDir > Width - 1 || y + yDir > Height - 1)
-					{
-						continue;
-					}
-					if (Board[x + xDir, y + yDir].CellState == CellState.MinesAround || 
-					    Board[x + xDir, y + yDir].CellState == CellState.Empty)
-					{
-						Board[x + xDir, y + yDir].CellState = CellState.MinesAround;
-						Board[x + xDir, y + yDir].MinesAround++;
-					}
+					if (row + yDir < 0 || column + xDir < 0 || row + yDir > Width - 1 || column + xDir > Height - 1) continue;
 
+					if (Board[row + yDir, column + xDir].State == State.MinesAround || 
+					    Board[row + yDir, column + xDir].State == State.Empty)
+					{
+						Board[row + yDir, column + xDir].State = State.MinesAround;
+						Board[row + yDir, column + xDir].MinesAround++;
+					}
 				}
-				
 			}
-			
-			printBoard();
 		}
 
-		private void printBoard()
+		public void ExposeAllEmptyCellsAround(int row, int column)
 		{
+			Board[row, column].Display = Display.Visible;
+			
+
+			if (Board[row, column].State != State.Empty) return;
+
+			for (var i = 0; i < 8; i++)
+			{
+				int xDir = directions[i, 0];
+				int yDir = directions[i, 1];
+
+				if (row + yDir < 0 || column + xDir < 0 || row + yDir > Width - 1 || column + xDir > Height - 1)
+				{
+					continue;
+				}
+
+				if (Board[row + yDir, column + xDir].Display != Display.Visible)
+				{
+					ExposeAllEmptyCellsAround(row + yDir, column + xDir);
+				}
+			}
+		}
+
+		public void printBoard()
+		{
+			Debug.WriteLine("===============================================");
 			for (var y = 0; y < Height; y++)
 			{
 				for (var x = 0; x < Width; x++)
 				{
-					if (Board[x, y].CellState == CellState.Mine)
+					if (Board[x, y].Display == Display.Visible && Board[x, y].State == State.Empty)
 					{
-						Debug.Write("x");	
+						Debug.Write("#");
+						continue;
+					}
+
+					if (Board[x, y].State == State.Mine)
+					{
+						Debug.Write("row");	
 					}
 					else
 					{
@@ -92,8 +112,9 @@ namespace PV260_Minesweeper
 					}
 					
 				}
-				Debug.WriteLine("");
+				Debug.WriteLine(" ");
 			}
+			Debug.WriteLine("===============================================");
 		}
 	}
 }
