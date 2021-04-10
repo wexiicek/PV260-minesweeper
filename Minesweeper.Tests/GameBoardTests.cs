@@ -17,8 +17,8 @@ namespace MinesweeperTests
 			var min = Math.Ceiling(width * height * 0.2);
 			var max = Math.Floor(width * height * 0.6);
 
-			Assert.GreaterOrEqual(board.MineCount, min);
-			Assert.LessOrEqual(board.MineCount, max);
+			Assert.GreaterOrEqual(board.RemainingMineCount, min);
+			Assert.LessOrEqual(board.RemainingMineCount, max);
 		}
 
 		[TestCase(10, 10)]
@@ -29,7 +29,7 @@ namespace MinesweeperTests
 
 			var numberOfMines = board.Board.Cast<Cell>().Count(cell => cell.State == State.Mine);
 
-			Assert.AreEqual(board.MineCount, numberOfMines);
+			Assert.AreEqual(board.RemainingMineCount, numberOfMines);
 		}
 
 		[TestCase(10, 10)]

@@ -2,6 +2,7 @@
 {
 	public enum GameStatus
 	{
+		NotStarted,
 		InProgress,
 		Win,
 		GameOver,

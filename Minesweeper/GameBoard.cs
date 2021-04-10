@@ -11,7 +11,7 @@ namespace PV260_Minesweeper
 		public int Height { get; set; }
 		public Cell[,] Board { get; set; }
 
-		public int MineCount { get; set; }
+		public int RemainingMineCount { get; set; }
 
 		private int[,] directions = { { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } };
 
@@ -36,7 +36,7 @@ namespace PV260_Minesweeper
 			var min = (int) Math.Ceiling(Width * Height * 0.2);
 			var max = (int) Math.Floor(Width * Height * 0.6);
 			var mineCount = random.Next(min, max);
-			MineCount = mineCount;
+			RemainingMineCount = mineCount;
 
 			while (mineCount > 0)
 			{
