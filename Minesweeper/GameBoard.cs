@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using Math = System.Math;
 
 namespace PV260_Minesweeper
@@ -12,8 +11,6 @@ namespace PV260_Minesweeper
 		public Cell[,] Board { get; set; }
 
 		public int RemainingMineCount { get; set; }
-
-		private int[,] directions = { { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } };
 
 		public GameBoard(int width, int height)
 		{
@@ -50,10 +47,10 @@ namespace PV260_Minesweeper
 
 				for (var i = 0; i < 8; i++)
 				{
-					int xDir = directions[i, 0];
-					int yDir = directions[i, 1];
+					int xDir = Helper.Directions[i, 0];
+					int yDir = Helper.Directions[i, 1];
 
-					if (row + yDir < 0 || column + xDir < 0 || row + yDir > Width - 1 || column + xDir > Height - 1) continue;
+					if (Helper.CellIsOutOfTheBoardRange(xDir, yDir, row, column, Width, Height)) continue;
 
 					if (Board[row + yDir, column + xDir].State == State.MinesAround || 
 					    Board[row + yDir, column + xDir].State == State.Empty)
@@ -68,53 +65,21 @@ namespace PV260_Minesweeper
 		public void ExposeAllEmptyCellsAround(int row, int column)
 		{
 			Board[row, column].Display = Display.Visible;
-			
 
 			if (Board[row, column].State != State.Empty) return;
 
 			for (var i = 0; i < 8; i++)
 			{
-				int xDir = directions[i, 0];
-				int yDir = directions[i, 1];
+				int xDir = Helper.Directions[i, 0];
+				int yDir = Helper.Directions[i, 1];
 
-				if (row + yDir < 0 || column + xDir < 0 || row + yDir > Width - 1 || column + xDir > Height - 1)
-				{
-					continue;
-				}
+				if (Helper.CellIsOutOfTheBoardRange(xDir, yDir, row, column, Width, Height)) continue;
 
 				if (Board[row + yDir, column + xDir].Display != Display.Visible)
 				{
 					ExposeAllEmptyCellsAround(row + yDir, column + xDir);
 				}
 			}
-		}
-
-		public void printBoard()
-		{
-			Debug.WriteLine("===============================================");
-			for (var y = 0; y < Height; y++)
-			{
-				for (var x = 0; x < Width; x++)
-				{
-					if (Board[x, y].Display == Display.Visible && Board[x, y].State == State.Empty)
-					{
-						Debug.Write("#");
-						continue;
-					}
-
-					if (Board[x, y].State == State.Mine)
-					{
-						Debug.Write("row");	
-					}
-					else
-					{
-						Debug.Write($"{Board[x, y].MinesAround}");	
-					}
-					
-				}
-				Debug.WriteLine(" ");
-			}
-			Debug.WriteLine("===============================================");
 		}
 	}
 }

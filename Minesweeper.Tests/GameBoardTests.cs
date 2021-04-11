@@ -9,6 +9,7 @@ namespace MinesweeperTests
 	public class GameBoardTests
 	{
 		[TestCase(10, 10)]
+		[TestCase(20, 5)]
 		public void AddMinesToTheBoard_MinesCountInRange(int width, int height)
 		{
 			var board = new GameBoard(width, height);
@@ -22,6 +23,7 @@ namespace MinesweeperTests
 		}
 
 		[TestCase(10, 10)]
+		[TestCase(20, 5)]
 		public void AddMinesToTheBoard_CorrectCountOfMinesIsPlanted(int width, int height)
 		{
 			var board = new GameBoard(width, height);
@@ -42,35 +44,27 @@ namespace MinesweeperTests
 			gameBoard.AddMinesToTheBoard();
 			var board = gameBoard.Board;
 
-			int[,] directions = { { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } };
-
 			for (int row = 0; row < width; row++)
 			{
 				for (int column = 0; column < height; column++)
 				{
 					var numberOfMinesAround = 0;
 
-					if (board[row, column].State != State.MinesAround)
-					{
-						continue;
-					}
+					if (board[row, column].State != State.MinesAround) continue;
 
 					var actualCellMinesAround = board[row, column].MinesAround;
 
 					for (var i = 0; i < 8; i++)
 					{
-						int xDir = directions[i, 0];
-						int yDir = directions[i, 1];
+						int xDir = Helper.Directions[i, 0];
+						int yDir = Helper.Directions[i, 1];
 
-						if (row + yDir < 0 || column + xDir < 0 || row + yDir > width - 1 || column + xDir > height - 1)
-						{
-							continue;
-						}
+						if (Helper.CellIsOutOfTheBoardRange(xDir, yDir, row, column, width, height)) continue;
+
 						if (board[row + yDir, column + xDir].State == State.Mine)
 						{
 							numberOfMinesAround++;
 						}
-
 					}
 
 					Assert.AreEqual(actualCellMinesAround, numberOfMinesAround);

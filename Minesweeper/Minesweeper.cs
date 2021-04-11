@@ -12,12 +12,11 @@ namespace PV260_Minesweeper
 
 		public static GameBoard GenerateGameBoard(int width, int height)
         {
-	        if (width < 3 || width > 50 || height < 3 || height > 50)
+	        if (Helper.UncorrectSizeOfTheBoard(width, height))
 	        {
 		        throw new ArgumentOutOfRangeException($"Height {height} or width {width} is out of valid size");
 	        }
 
-	        
 	        GameBoard = new GameBoard(width, height);
 	        GameBoard.AddMinesToTheBoard();
 	        GameStatus = GameStatus.InProgress;
@@ -34,8 +33,8 @@ namespace PV260_Minesweeper
 			GameBoard = null;
 			_flaggedCount = 0;
 			_initialMinesCount = 0;
-
 		}
+
         public static GameBoard Uncover(int row, int column)
         {
 	        Validate(row, column);
@@ -68,20 +67,29 @@ namespace PV260_Minesweeper
 
 	        var cell = GameBoard.Board[row, column];
 
-	        if (cell.Display == Display.Visible) return GameBoard;
-	        
-	        if (cell.Display == Display.Flag)
+	        return cell.Display switch
 	        {
-		        cell.Display = Display.Hidden;
-		        _flaggedCount--;
+		        Display.Visible => GameBoard,
+		        Display.Flag => FlagOnAlreadyFlaggedCell(cell),
+		        _ => FlagOnHiddenCell(cell)
+	        };
+        }
 
-		        if (cell.State == State.Mine)
-		        {
-			        GameBoard.RemainingMineCount++;
-		        }
-		        return GameBoard;
+        private static GameBoard FlagOnAlreadyFlaggedCell(Cell cell)
+        {
+	        cell.Display = Display.Hidden;
+	        _flaggedCount--;
+
+	        if (cell.State == State.Mine)
+	        {
+		        GameBoard.RemainingMineCount++;
 	        }
 
+	        return GameBoard;
+        }
+
+        private static GameBoard FlagOnHiddenCell(Cell cell)
+        {
 	        cell.Display = Display.Flag;
 	        _flaggedCount++;
 
@@ -96,11 +104,9 @@ namespace PV260_Minesweeper
 	        }
 
 	        return GameBoard;
+        }
 
-		}
-        
-        
-        private static void Validate(int row, int column)
+		private static void Validate(int row, int column)
         {
 	        if (GameBoard == null)
 	        {
@@ -110,7 +116,7 @@ namespace PV260_Minesweeper
 	        if (row < 0 || row > GameBoard.Width - 1 || column < 0 || column > GameBoard.Height - 1)
 	        {
 		        throw new ArgumentOutOfRangeException($"row {row} or column {column} is out of the bounds" +
-		                                              $" of the generated board with height {GameBoard.Height} and width {GameBoard.Width}.");
+					$" of the generated board with height {GameBoard.Height} and width {GameBoard.Width}.");
 	        }
 
 	        if (GameStatus == GameStatus.Win)
@@ -123,6 +129,5 @@ namespace PV260_Minesweeper
 		        throw new ApplicationException("Game is already lost.");
 	        }
         }
-
     }
 }

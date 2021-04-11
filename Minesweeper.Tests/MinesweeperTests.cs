@@ -33,15 +33,13 @@ namespace MinesweeperTests
         [TestCase(6, 9)]
         public void GenerateGameBoard_ValidSize_ReturnsValidBoard(int width, int height)
         {
-            
-            var board = Minesweeper.GenerateGameBoard(width, height);
+	        var board = Minesweeper.GenerateGameBoard(width, height);
 
             var boardWidth = board.Width;
             var boardHeight = board.Height;
 
             Assert.AreEqual(width, boardWidth);
             Assert.AreEqual(height, boardHeight);
-            
             Assert.AreEqual(boardWidth * boardHeight, board.Board.Length);
         }
         
@@ -53,15 +51,10 @@ namespace MinesweeperTests
             Assert.AreEqual(GameStatus.InProgress, Minesweeper.GameStatus);
         }
 
-
-        
-
         [Test]
-
         public void GenerateGameBoard_ValidSize_AllCellsAreHidden()
         {
             Minesweeper.GenerateGameBoard(10, 10);
-
             var board = Minesweeper.GameBoard.Board;
             
             var allCells = board.Cast<Cell>().Select(x => x.Display);
@@ -74,11 +67,9 @@ namespace MinesweeperTests
         public void Uncover_VisibleCell_DoNothing()
         {
             Minesweeper.GenerateGameBoard(10, 10);
-
             var board = Minesweeper.GameBoard.Board;
 
             board[2, 2].Display = Display.Visible;
-
             Minesweeper.Uncover(2, 2);
             
             Assert.AreEqual(Display.Visible, board[2, 2].Display);
@@ -88,11 +79,9 @@ namespace MinesweeperTests
         public void Uncover_FlaggedCell_DoNothing()
         {
             Minesweeper.GenerateGameBoard(10, 10);
-
             var board = Minesweeper.GameBoard.Board;
 
             board[2, 2].Display = Display.Flag;
-
             Minesweeper.Uncover(2, 2);
             
             Assert.AreEqual(Display.Flag, board[2, 2].Display);
@@ -102,11 +91,9 @@ namespace MinesweeperTests
         public void Uncover_Mine_GameStatusSetToGameOver()
         {
             Minesweeper.GenerateGameBoard(10, 10);
-            
             var board = Minesweeper.GameBoard.Board;
 
             board[2, 2].State = State.Mine;
-            
             Minesweeper.Uncover(2, 2);
             
             Assert.AreEqual(GameStatus.GameOver, Minesweeper.GameStatus);
@@ -116,11 +103,9 @@ namespace MinesweeperTests
         public void Uncover_MinesAround_SetCellToVisible()
         {
             Minesweeper.GenerateGameBoard(10, 10);
-
             var board = Minesweeper.GameBoard.Board;
 
             board[2, 2].State = State.MinesAround;
-
             Minesweeper.Uncover(2, 2);
             
             Assert.AreEqual(Display.Visible, board[2, 2].Display);
@@ -130,10 +115,12 @@ namespace MinesweeperTests
         public void Uncover_GameBoardIsNotGenerated_ThrowsApplicationException()
         {
             Minesweeper.Reset();
+
             Assert.Throws<ApplicationException>(() => Minesweeper.Uncover(0, 0));
         }
         
         [TestCase(5, 5, 10, 10)]
+        [TestCase(5, 10, 5, 10)]
         public void Uncover_IndexOutsideOfGameBoard_ThrowsArgumentOutOfRangeException(int width, int height, int row, int col)
         {
             Minesweeper.GenerateGameBoard(width, height);
@@ -166,12 +153,10 @@ namespace MinesweeperTests
         public void Flag_FlaggedEmptyCell_CellIsHidden()
         {
             Minesweeper.GenerateGameBoard(3, 3);
-
             var board = Minesweeper.GameBoard.Board;
 
             board[0, 0].Display = Display.Flag;
             board[0, 0].State = State.Empty;
-
             Minesweeper.Flag(0, 0);
             
             Assert.AreEqual(Display.Hidden, board[0, 0].Display);
@@ -181,14 +166,11 @@ namespace MinesweeperTests
         public void Flag_FlaggedMinedCell_RemainingMinesCountIncreasesAndCellIsHidden()
         {
             Minesweeper.GenerateGameBoard(3, 3);
-
             var board = Minesweeper.GameBoard.Board;
+            var beforeMinesCount = Minesweeper.GameBoard.RemainingMineCount;
 
             board[0, 0].Display = Display.Flag;
             board[0, 0].State = State.Mine;
-
-            var beforeMinesCount = Minesweeper.GameBoard.RemainingMineCount;
-
             Minesweeper.Flag(0, 0);
             
             Assert.AreEqual(Display.Hidden, board[0, 0].Display);
@@ -199,11 +181,9 @@ namespace MinesweeperTests
         public void Flag_VisibleCell_CellRemainsUnchanged()
         {
             Minesweeper.GenerateGameBoard(3, 3);
-
             var board = Minesweeper.GameBoard.Board;
 
             board[0, 0].Display = Display.Visible;
-
             Minesweeper.Flag(0, 0);
             
             Assert.AreEqual(Display.Visible, board[0, 0].Display);
@@ -213,13 +193,10 @@ namespace MinesweeperTests
         public void Flag_HiddenMinedCell_RemainingMinesCountDecreasesAndCellIsFlagged()
         {
             Minesweeper.GenerateGameBoard(3, 3);
-
             var board = Minesweeper.GameBoard.Board;
-            
-            board[0, 0].State = State.Mine;
-
             var beforeMinesCount = Minesweeper.GameBoard.RemainingMineCount;
 
+            board[0, 0].State = State.Mine;
             Minesweeper.Flag(0, 0);
             
             Assert.AreEqual(Display.Flag, board[0, 0].Display);
